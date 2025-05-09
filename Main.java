@@ -14,6 +14,58 @@ public class Main {
         System.out.print("Enter 1, 2, or 3: ");
         int choice = input.nextInt();
 
+        switch (choice) {
+            case 1:
+                System.out.print("HOW MUCH DO YOU WANT TO DEPOSIT? ");
+                float depositAmount = input.nextFloat();
+                if (depositAmount >= 5) {
+                    balance += depositAmount;
+                    System.out.println("Money was deposited successfully.");
+                    System.out.println("Your new balance is: R" + balance);
+                } else {
+                    System.out.println("Money was not deposited. Minimum amount to deposit is R5.");
+                }
+                break;
+
+            case 2:
+                System.out.println("Your current balance is: R" + balance);
+                break;
+
+            case 3:
+                String[] peopleName = {"nathan", "life", "gugu"};
+                System.out.println("Your current balance is: R" + balance);
+
+                System.out.print("Enter amount to transfer: ");
+                float transferAmount = input.nextFloat();
+
+                System.out.print("Enter name of the person you want to transfer to: ");
+                String personName = input.next();
+
+                boolean personExists = false;
+                for (String name : peopleName) {
+                    if (name.equalsIgnoreCase(personName)) {
+                        personExists = true;
+                        break;
+                    }
+                }
+
+                if (!personExists) {
+                    System.out.println("Person does not exist: " + personName);
+                } else if (transferAmount < 5) {
+                    System.out.println("Minimum transfer amount is R5.");
+                } else if (transferAmount > balance) {
+                    System.out.println("Insufficient funds.");
+                } else {
+                    balance -= transferAmount;
+                    System.out.println("Money was transferred successfully to " + personName);
+                    System.out.println("Your new balance is: R" + balance);
+                }
+                break;
+
+            default:
+                System.out.println("Invalid option. Please enter 1, 2, or 3.");
+        }
+
        
         input.close(); 
        
