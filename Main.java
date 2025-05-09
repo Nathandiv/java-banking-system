@@ -11,7 +11,10 @@ public class Main {
         System.out.println("1. Deposit");
         System.out.println("2. Check balance");
         System.out.println("3. Transfer");
-        System.out.print("Enter 1, 2, or 3: ");
+        System.out.println("4. withdraw");
+
+        System.out.print("Enter 1, 2,3 or 4: ");
+
         int choice = input.nextInt();
 
         switch (choice) {
@@ -29,6 +32,35 @@ public class Main {
 
             case 2:
                 System.out.println("Your current balance is: R" + balance);
+                System.out.println("1. Deposit");
+                System.out.println("2. withdraw");
+                System.out.print("Enter 1, 2: ");
+                int checkBalanceChoice = input.nextInt();
+                if (checkBalanceChoice == 1) {
+                    System.out.print("HOW MUCH DO YOU WANT TO DEPOSIT? ");
+                    float depositAmount2 = input.nextFloat();
+                    if (depositAmount2 >= 5) {
+                        balance += depositAmount2;
+                        System.out.println("Money was deposited successfully.");
+                        System.out.println("Your new balance is: R" + balance);
+                    } else {
+                        System.out.println("Money was not deposited. Minimum amount to deposit is R5.");
+                    }
+                } else if (checkBalanceChoice == 2) {
+                    System.out.print("Enter amount to withdraw: ");
+                    float withdrawAmount = input.nextFloat();
+                    if (withdrawAmount < 5) {
+                        System.out.println("Minimum withdrawal amount is R5.");
+                    } else if (withdrawAmount > balance) {
+                        System.out.println("Insufficient funds.");
+                    } else {
+                        balance -= withdrawAmount;
+                        System.out.println("Money was withdrawn successfully.");
+                        System.out.println("Your new balance is: R" + balance);
+                    }
+                }
+                
+
                 break;
 
             case 3:
@@ -62,8 +94,23 @@ public class Main {
                 }
                 break;
 
+            case 4:
+                System.out.print("Enter amount to withdraw: ");
+                float withdrawAmount = input.nextFloat();
+
+                if (withdrawAmount < 5) {
+                    System.out.println("Minimum withdrawal amount is R5.");
+                } else if (withdrawAmount > balance) {
+                    System.out.println("Insufficient funds.");
+                } else {
+                    balance -= withdrawAmount;
+                    System.out.println("Money was withdrawn successfully.");
+                    System.out.println("Your new balance is: R" + balance);
+                }
+                break;
+
             default:
-                System.out.println("Invalid option. Please enter 1, 2, or 3.");
+                System.out.println("Invalid option. Please enter 1, 2,4 or 4.");
         }
 
        
